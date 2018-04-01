@@ -58,16 +58,10 @@ public class SimpleDynamoProvider extends ContentProvider {
 
     @Override
     public int delete(Uri uri, String selection, String[] selectionArgs) {
-
-
-
-        // TODO Auto-generated method stub
-        /// adding delete function
         Context context = getContext();
         Log.d("inside_delete", " deleting this file" + selection);
         File fin = new File(context.getFilesDir(), (selection + ".txt"));
         fin.delete();
-        /////////////////// making its replicas also delete it's files:
         String del_park = find_key_parking(selection);
         String [] su2 = return_succs(del_park);
         String del = "delete" + " " + selection;
@@ -96,10 +90,6 @@ public class SimpleDynamoProvider extends ContentProvider {
          }
         return 0;
     }
-
-
-
-
 
     @Override
     public String getType(Uri uri) {
